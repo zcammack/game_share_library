@@ -1,1 +1,16 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit your game here!</h1>
+
+<form method="POST" action="/games/<%= @game.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+    <select name="user_id">
+        <% @users.each do | user |%>
+            <option value="<%= user.id %>"><%= user.username %></option>
+        <% end %>
+    </select><br />
+
+
+    Title: <input type="text" name="title"><br />
+    Platform: <textarea name="platform"></textarea><br />
+    <input type="submit">
+
+</form>

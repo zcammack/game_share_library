@@ -1,1 +1,17 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @game.title %></h1>
+<p><%= @game.platform %></p>
+
+<a href="/games">Back to all games</a>
+
+
+<% if @game.id == current_user.id %>
+<!-- edit link -->
+    <a href="/games/<%= @game.id %>/edit">Edit Game</a><br />
+    <%# delete form %>
+    <h3>Would you like to delete this game?</h3>
+    <form method="POST" action="/games/<%= @game.id %>">
+        <input type="hidden" id="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete">
+    </form>
+
+<% end %>

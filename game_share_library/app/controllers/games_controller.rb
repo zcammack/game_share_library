@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     erb :"games/show"
   end
 
-  get '/posts/:id' do
+  get '/games/:id' do
     redirect_if_not_logged_in
     @game = Game.find_by_id(params[:id])
     erb :"games/show"
