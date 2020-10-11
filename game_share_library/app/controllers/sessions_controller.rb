@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect "/games"
     else
-      flash[:notice] = "This email or password is invalid."
+      flash[:notice] = "This email or password is invalid. Please try again."
       redirect "/login"
     end
   end
