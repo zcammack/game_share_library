@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   get '/games' do
     redirect_if_not_logged_in
     @games = Game.all
+    @users = User.all
     erb :"games/index"
   end
 
@@ -13,8 +14,10 @@ class GamesController < ApplicationController
   end
 
   get '/games/:id' do
+    binding.pry
     redirect_if_not_logged_in
     @game = Game.find_by_id(params[:id])
+    @owner = User.find_by_id(params[:user_id])
     erb :"games/show"
   end
 
