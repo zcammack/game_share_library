@@ -2,16 +2,16 @@
 <h3>Platform: <%= @game.platform %></h3><br>
 <h3>Owned By: <%= @owner.username %></h3><br>
 
-
-<a href="/games">Back to All Games</a><br><br>
-
-
-<% if @game.id == current_user.id %>
+<% if @game.user_id == current_user.id %>
 
     <a href="/games/<%= @game.id %>/edit">Edit Game</a><br><br>
     
     <form onsubmit="return confirm('Are you sure you want to delete this game?')" method="POST" action="/games/<%= @game.id %>">
         <input type="hidden" id="hidden" name="_method" value="DELETE">
         <button type="submit">Delete</button>
-    </form>
+    </form> <br>
 <% end %>
+
+<h3><a href="/games">Back to All Games</a></h3><br>
+
+<h3><a href="/home">Back To Homepage</a></h3>

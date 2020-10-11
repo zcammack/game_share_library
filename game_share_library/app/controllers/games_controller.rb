@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   get '/games/new' do
     redirect_if_not_logged_in
     @users = User.all
-    erb :"games/show"
+    erb :"games/new"
   end
 
   get '/games/:id' do
@@ -20,10 +20,10 @@ class GamesController < ApplicationController
     erb :"games/show"
   end
 
-  get '/games' do
+  post '/games' do
       game = current_user.games.build(params)
       if game.save
-        redirect "/games#{game.id}"
+        redirect "/games/#{game.id}"
       else
         redirect "games/new"
       end

@@ -14,4 +14,10 @@ class UsersController < ApplicationController
       erb :"users/signup"
     end
   end
+
+  get '/home' do
+    @my_games = Game.where(user_id: current_user.id)
+    erb :"users/home"
+  end
+
 end
